@@ -1,0 +1,24 @@
+{
+  "name": "webStorm",
+  "version": "0.0.0",
+  "authors": [
+    "Jason Gillman Jr. <jason@rrfaae.com>"
+  ],
+  "description": "A generic web client for Liquid Web's Storm API",
+  "main": "index.html",
+  "keywords": [
+    "Storm",
+    "API"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stormAPI": "~0.3.0"
+  }
+}
