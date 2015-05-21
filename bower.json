@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "stormAPI": "~0.3.0"
+    "stormAPI": "~0.3.0",
+    "jquery-ui": "~1.11.4"
   }
 }

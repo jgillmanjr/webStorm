@@ -1,8 +1,61 @@
 <html>
 	<head>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="bower_components/stormAPI/stormAPI.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/webStorm.css" />
 	</head>
 	<body>
+		<div id="mainDiv">
+			<fieldset id="setup">
+				<legend>Connection Setup (Not Yet Setup)</legend>
+
+				<label>
+					API Username:
+					<input id="userName" />
+				</label>
+
+				<label>
+					Password:
+					<input id="password" type="password" />
+				</label>
+
+				<label>
+					API Version:
+					<select id="apiVersion">
+						<option value="v1">Version 1</option>
+						<option value="bleed">Bleed</option>
+					</select>
+				</label>
+
+				<label class="hidden">
+					Environment:
+					<select id="environment">
+						<option value="production">Production</option>
+						<option value="staging">Staging</option>
+						<option value="development">Development</option>
+					</select>
+				</label>
+
+				<label class="hidden">
+					Internal/Pub:
+					<select id="inPub">
+						<option value="public">Public</option>
+						<option value="internal">Internal</option>
+					</select>
+				</label>
+
+				<label class="hidden">
+					Dev User:
+					<input id="devUser" />
+				</label>
+
+				<button id="loginButton">Login</button>
+			</fieldset>
+
+		</div>
+
+		<script type="text/javascript" src="js/webStorm.js"></script>
 	</body>
 </html>
