@@ -68,14 +68,21 @@ $('#loginButton').on('click', function() {
 	} else {
 		$('#setup > legend').text('Connection Setup: ' + 'User: ' + setupParams.userName + ' || API Version: ' + setupParams.apiVersion.toUpperCase() + ' || Environment: ' + setupParams.environment.toUpperCase() + ' ' + setupParams.inPub.toUpperCase());
 
-	/*
-	 * Token countdown timer
-	 */
-	$('#tokenTimer').removeClass('hidden');
-	$('#countdown').countdown(new Date(apiClient.tokenExpiration * 1000), function(event) {
-		$(this).html(event.strftime('%Hh %Mm %Ss'));
-	});
+		/*
+		 * Token countdown timer
+		 */
+		$('#tokenTimer').removeClass('hidden').addClass('tightWrap');
+		$('#countdown').countdown(new Date(apiClient.tokenExpiration * 1000), function(event) {
+			$(this).html(event.strftime('%Hh %Mm %Ss'));
+		});
 	}
 
-
+	/*
+	 * Get the available API methods and setup the method autocomplete - only runs if the API called is public and the version is bleed
+	 */
+	if (setupParams.inPub == 'public' && setupParams.apiVersion == 'bleed'){
+		$('#method').autocomplete({
+			source: getMethods()
+		});
+	}
 });

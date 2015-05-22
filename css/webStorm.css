@@ -17,8 +17,19 @@ fieldset {
 	display: none;
 }
 
+.tightWrap {
+	display: inline-block;
+}
+
 #mainDiv {
 	width: 75%;
 	position: relative;
 	left: 12.5%;
+}
+
+#tokenTimer {
+	border: 1px dashed #AAAAAA;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #EEEEEE;
 }

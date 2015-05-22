@@ -3,9 +3,11 @@
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery.countdown/dist/jquery.countdown.min.js"></script>
+		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="bower_components/stormAPI/stormAPI.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="css/webStorm.css" />
+		<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
 	</head>
 	<body>
 		<div id="mainDiv">
@@ -63,7 +65,16 @@
 				<button id="loginButton">Login</button>
 			</fieldset>
 
+			<fieldset id="callData">
+				<legend>Call Data</legend>
 
+				<div id="methodDiv" class="tightWrap">
+					<label>
+					Method:
+					<input id="method" />
+					</label>
+				</div>
+			</fieldset>
 		</div>
 
 		<script type="text/javascript" src="js/webStorm.js"></script>
