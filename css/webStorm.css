@@ -16,3 +16,9 @@ fieldset {
 .hidden {
 	display: none;
 }
+
+#mainDiv {
+	width: 75%;
+	position: relative;
+	left: 12.5%;
+}

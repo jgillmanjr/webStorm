@@ -53,13 +53,29 @@ $('#loginButton').on('click', function() {
 		baseURI = (setupParams.inPub == 'public') ? 'https://api-public.' + setupParams.devUser + '.dev.liquidweb.com:20900' : 'https://api-internal.' + setupParams.devUser + '.dev.liquidweb.com:20800';
 	}
 
+	/*
+	 * Create the client object
+	 */
 	apiClient = new stormAPI(setupParams.userName, setupParams.password, setupParams.apiVersion, baseURI);
 
+	/*
+	 * Informational Header
+	 */
 	var authStatus = apiClient.checkAuth();
 	if (!authStatus.status) {
 		$('#setup > legend').text('Connection Setup: ' + authStatus.message);
 		alert(authStatus.message);
 	} else {
 		$('#setup > legend').text('Connection Setup: ' + 'User: ' + setupParams.userName + ' || API Version: ' + setupParams.apiVersion.toUpperCase() + ' || Environment: ' + setupParams.environment.toUpperCase() + ' ' + setupParams.inPub.toUpperCase());
+
+	/*
+	 * Token countdown timer
+	 */
+	$('#tokenTimer').removeClass('hidden');
+	$('#countdown').countdown(new Date(apiClient.tokenExpiration * 1000), function(event) {
+		$(this).html(event.strftime('%Hh %Mm %Ss'));
+	});
 	}
+
+
 });

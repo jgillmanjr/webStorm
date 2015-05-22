@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "stormAPI": "~0.3.0",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "jquery.countdown": "~2.0.4"
   }
 }

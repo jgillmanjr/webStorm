@@ -2,12 +2,21 @@
 	<head>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery.countdown/dist/jquery.countdown.min.js"></script>
 		<script type="text/javascript" src="bower_components/stormAPI/stormAPI.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="css/webStorm.css" />
 	</head>
 	<body>
 		<div id="mainDiv">
+			<div id="tokenTimer" class="hidden">
+				Token Expires in: 
+				<span id="countdown">
+				</span>
+
+				|| Click 'Login' again to refresh.
+			</div>
+
 			<fieldset id="setup">
 				<legend>Connection Setup (Not Yet Setup)</legend>
 
@@ -53,6 +62,7 @@
 
 				<button id="loginButton">Login</button>
 			</fieldset>
+
 
 		</div>
 
