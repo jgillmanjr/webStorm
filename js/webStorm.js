@@ -16,7 +16,7 @@ var getMethods = function() {
 	var availableMethods = [];
 
 	_.each(apiClient.simpleCall(['account', 'user', 'permitted']).permissions, function(value, key, list) {
-		availableMethods.push(key.replace(/\./g, '/').toLowerCase());
+		availableMethods.push(key.replace(/\./g, '/').toLowerCase()); // Convert from periods to slashes
 	});
 
 	return availableMethods;
