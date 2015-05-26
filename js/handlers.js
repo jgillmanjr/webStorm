@@ -143,5 +143,5 @@ $('#sendIt').on('click', function() {
 	}
 
 	$('#resultDiv').show();
-	$('#callResult').empty().append(JSON.stringify(apiResponse, null, 4));
+	$('#callResult').val(JSON.stringify(apiResponse, null, 4));
 });
