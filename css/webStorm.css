@@ -21,7 +21,12 @@ fieldset {
 	display: inline-block;
 }
 
-#mainDiv {
+.paramField {
+	display: block;
+	margin-bottom: 5px;
+}
+
+#mainDiv, #resultDiv {
 	width: 75%;
 	position: relative;
 	left: 12.5%;
@@ -32,4 +37,14 @@ fieldset {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #EEEEEE;
+}
+
+#methodFieldset {
+	vertical-align: top;
+}
+
+#callResult {
+	width: 100%;
+	height: 400px;
+	border: none;
 }

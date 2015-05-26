@@ -75,6 +75,11 @@ $('#loginButton').on('click', function() {
 		$('#countdown').countdown(new Date(apiClient.tokenExpiration * 1000), function(event) {
 			$(this).html(event.strftime('%Hh %Mm %Ss'));
 		});
+
+		/*
+		 * Also show the call button
+		 */
+		$('#sendIt').show();
 	}
 
 	/*
@@ -85,4 +90,58 @@ $('#loginButton').on('click', function() {
 			source: getMethods()
 		});
 	}
+});
+
+/*
+ * Add a param field
+ */
+$('#addParam').on('click', function() {
+	$.get('htmlIncludes/paramField.inc.html', function(data) {
+		$('#addParam').before(data);
+	});
+});
+
+/*
+ * Remove the param field when it's delete button is clicked
+ */
+$('#paramFieldset').on('click', '.paramField > .removeParam', function() {
+	$(this).parent().remove();
+});
+
+/*
+ * Change the param value field name attribute to whatever is entered in the parameter name field
+ */
+$('#paramFieldset').on('change', '.paramField > label >.paramName', function() {
+	$(this).parent().siblings('label').children('.paramValue').attr('name', $(this).val());
+});
+
+/*
+ * Serialize the params (if any) and make the call
+ */
+$('#sendIt').on('click', function() {
+
+	/*
+	 * Get params
+	 */
+	var paramsObj = {};
+	_.each($('.paramField > label > .paramValue').serializeArray(), function(element, index, list){
+		if(element.name != 'updateToParamName' && element.value !== '') {
+			paramsObj[element.name] = element.value;
+		}
+	});
+
+	/*
+	 * The setup and call
+	 */
+	var method = $('#method').val().split('/'); // Break up the API method
+
+	var apiResponse;
+	if(paramsObj) {
+		apiResponse = apiClient.simpleCall(method, paramsObj);
+	} else {
+		apiResponse = apiClient.simpleCall(method);
+	}
+
+	$('#resultDiv').show();
+	$('#callResult').empty().append(JSON.stringify(apiResponse, null, 4));
 });
