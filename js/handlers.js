@@ -41,6 +41,13 @@ $('#loginButton').on('click', function() {
 	};
 
 	/*
+	 * If there's an existing autocomplete widget setup for the method field, nuke it in case the new setup doesn't support it
+	 */
+	if($('#method').autocomplete('instance')) {
+		$('#method').autocomplete('destroy');
+	}
+
+	/*
 	 * Build the proper baseURI
 	 */
 	var baseURI;
