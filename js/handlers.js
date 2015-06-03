@@ -78,10 +78,7 @@ $('#loginButton').on('click', function() {
 		/*
 		 * Token countdown timer
 		 */
-		$('#tokenTimer').removeClass('hidden').addClass('tightWrap');
-		$('#countdown').countdown(new Date(apiClient.tokenExpiration * 1000), function(event) {
-			$(this).html(event.strftime('%Hh %Mm %Ss'));
-		});
+		updateTokenTimer(apiClient.tokenExpiration);
 
 		/*
 		 * Also show the call button
@@ -140,13 +137,23 @@ $('#sendIt').on('click', function() {
 	/*
 	 * The setup and call
 	 */
-	var method = $('#method').val().split('/'); // Break up the API method
+	var method = $('#method').val().toLowerCase().split('/'); // Break up the API method
 
 	var apiResponse;
 	if(paramsObj) {
 		apiResponse = apiClient.simpleCall(method, paramsObj);
 	} else {
 		apiResponse = apiClient.simpleCall(method);
+	}
+
+	/*
+	 * Update the token expiration information if account.auth.token or account.auth.expiretoken is called
+	 */
+	if(_.isEqual(method, ['account', 'auth', 'token'])) {
+		updateTokenTimer(parseInt(apiResponse.expires)); // Because sometimes it will come back as a string
+		console.log('updated token');
+	} else if(_.isEqual(method,['account', 'auth', 'expiretoken'])) {
+		expiredTokenTimer();
 	}
 
 	$('#resultDiv').show();

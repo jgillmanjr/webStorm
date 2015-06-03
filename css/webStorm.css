@@ -26,6 +26,10 @@ fieldset {
 	margin-bottom: 5px;
 }
 
+.expiredToken {
+	background-color: #BB0000;
+}
+
 #mainDiv, #resultDiv {
 	width: 75%;
 	position: relative;
